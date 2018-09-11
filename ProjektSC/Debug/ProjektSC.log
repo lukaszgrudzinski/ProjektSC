@@ -1,0 +1,9 @@
+﻿  Calendar.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(10): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(39): warning C4018: '>': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(67): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(108): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(126): warning C4018: '<': signed/unsigned mismatch
+  ProjektSC.vcxproj -> C:\Users\Grudzio\source\repos\ProjektSC\Debug\ProjektSC.exe
