@@ -25,12 +25,11 @@ SendPatientHome::~SendPatientHome()
 
 void SendPatientHome::execute()
 {
-	if(bloodPoint->getPatientsBloodTypeNeeded())
-		bloodBank->popBloodUnit(bloodPoint->getPatientsBloodNeeded());
-	else
-		bloodBank->popBloodUnitB(bloodPoint->getPatientsBloodNeeded());
-	bloodBank->incBloodUnitsUsed(bloodPoint->getPatientsBloodNeeded());
-	bloodPoint->deleteFirstPatient();
+	if (bloodPoint->DoWeSendPatientWithBloodTypeA())
+		bloodBank->popBloodUnit(bloodPoint->eraseFirstPatientWithAType());
+	else if (bloodPoint->DoWeSendPatientWithBloodTypeB())
+		bloodBank->popBloodUnitB(bloodPoint->eraseFirstPatientWithBType());
+	
 	std::cout << "A patient got his blood!" << std::endl;
 	
 
@@ -51,11 +50,11 @@ void SendPatientHome::execute()
 	{
 		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 1, bloodPoint, calendar));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 0 && bloodBank->get_blood_bank_size() > bloodPoint->getPatientsBloodNeeded() && bloodPoint->getPatientsBloodNeeded() != 0)												//Giving a pacient needed blood and sending him home
+	if (bloodPoint->DoWeSendPatientWithBloodTypeA())												//Giving a pacient needed blood and sending him home
 	{
 		calendar->addEvent(new SendPatientHome(bloodPoint, bloodBank, calendar));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 1 && bloodBank->get_blood_bank_sizeB() > bloodPoint->getPatientsBloodNeeded() && bloodPoint->getPatientsBloodNeeded() != 0)												//Giving a pacient needed blood and sending him home
+	if (bloodPoint->DoWeSendPatientWithBloodTypeB())												//Giving a pacient needed blood and sending him home
 	{
 		calendar->addEvent(new SendPatientHome(bloodPoint, bloodBank, calendar));
 	}
