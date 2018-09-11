@@ -1,9 +1,24 @@
-﻿  Calendar.cpp
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(10): warning C4018: '<': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(39): warning C4018: '>': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(57): warning C4018: '<': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(67): warning C4018: '<': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(101): warning C4018: '<': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(108): warning C4018: '<': signed/unsigned mismatch
-c:\users\grudzio\source\repos\projektsc\projektsc\calendar.cpp(126): warning C4018: '<': signed/unsigned mismatch
+﻿  BloodBank.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(144): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(176): warning C4018: '>=': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(183): warning C4018: '>=': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(205): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(218): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(240): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(253): warning C4018: '<': signed/unsigned mismatch
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodbank.cpp(280): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  BloodDonationPoint.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\blooddonationpoint.cpp(21): warning C4018: '<': signed/unsigned mismatch
+  BloodOrder.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\bloodorder.cpp(89): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  EmergencyBloodOrder.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\emergencybloodorder.cpp(91): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  NewBloodDonor.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\newblooddonor.cpp(75): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  NewPatient.cpp
+c:\users\grudzio\source\repos\projektsc\projektsc\newpatient.cpp(71): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  ProjektSC.cpp
+  SendPatientHome.cpp
+  UtilizeBlood.cpp
+  Generating Code...
   ProjektSC.vcxproj -> C:\Users\Grudzio\source\repos\ProjektSC\Debug\ProjektSC.exe

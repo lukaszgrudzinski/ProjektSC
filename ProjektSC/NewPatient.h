@@ -6,12 +6,13 @@
 int roll_patient();
 class NewPatient : public Event
 {
-	BloodDonationPoint* bloodBank;
+	BloodDonationPoint* bloodPoint;
 	Calendar* calendar;
+	BloodBank* bloodBank;
 public:
 	void execute(BloodDonationPoint *bloodPoint);
 	void execute() override;
-	NewPatient(BloodDonationPoint * _bloodBank,Calendar* _calendar);
+	NewPatient(BloodDonationPoint * _bloodPoint,Calendar* _calendar,BloodBank * _bloodBank);
 	~NewPatient();
 };
 

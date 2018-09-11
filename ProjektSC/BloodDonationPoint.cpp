@@ -4,6 +4,7 @@
 #include <iostream>
 #include "BloodDonationPoint.h"
 #include "Patient.h"
+#include "Patient.h"
 #include <codecvt>
 #include <algorithm>
 #include <vector>
@@ -59,6 +60,35 @@ bool BloodDonationPoint::getPatientsBloodTypeNeeded()
 	return lineOfPatients[0]->typeeNeeded;
 }
 
+bool BloodDonationPoint::DoWeSendPatientWithBloodTypeA()
+{
+	
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (lineOfPatients[i]->typeeNeeded == 0)
+		{
+			if (bloodBank->DoWeHaveXBloodUnits(lineOfPatients[i]->bloodUnitsNeeded))
+				return true;
+		}
+
+	}
+	return false;
+}
+
+bool BloodDonationPoint::DoWeSendPatientWithBloodTypeB()
+{
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (lineOfPatients[i]->typeeNeeded == 1)
+		{
+			if (bloodBank->DoWeHaveXBloodUnitsB(lineOfPatients[i]->bloodUnitsNeeded))
+				return true;
+		}
+
+	}
+	return false;
+}
+
 bool BloodDonationPoint::isLineEmpty()
 {
 	if (lineOfPatients.size() == 0)
@@ -73,6 +103,46 @@ void BloodDonationPoint::eraseFirstPatient()
 	bloodBank->popBloodUnit(lineOfPatients[0]->bloodUnitsNeeded);
 	//bloodBank->bloodUnitsUsed+= lineOfPatients[0]->bloodUnitsNeeded;
 	lineOfPatients.erase(lineOfPatients.begin());
+}
+
+int BloodDonationPoint::eraseFirstPatientWithAType()
+{
+	int numberOfBloodUnitsToDelete;
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (bloodBank->get_blood_bank_size() >= lineOfPatients[i]->bloodUnitsNeeded &&lineOfPatients[i]->typeeNeeded == 0)
+		{
+			numberOfBloodUnitsToDelete = lineOfPatients[i]->bloodUnitsNeeded;
+			Patient* temp = lineOfPatients.back();						 //
+			lineOfPatients.pop_back();									 //Deletes patient i
+			if (lineOfPatients.size() > 0 && i < lineOfPatients.size())	 //
+				lineOfPatients[i] = temp;								 //
+			return numberOfBloodUnitsToDelete;
+			
+		}
+		
+	}
+	return 0;//Returns number of blood units to delete from bloodbank
+}
+
+int BloodDonationPoint::eraseFirstPatientWithBType()
+{
+	int numberOfBloodUnitsToDelete;
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (bloodBank->get_blood_bank_sizeB() >= lineOfPatients[i]->bloodUnitsNeeded &&lineOfPatients[i]->typeeNeeded == 1)
+		{
+			numberOfBloodUnitsToDelete = lineOfPatients[i]->bloodUnitsNeeded;
+			Patient* temp = lineOfPatients.back();						 //
+			lineOfPatients.pop_back();									 //Deletes patient i
+			if (lineOfPatients.size() > 0 && i < lineOfPatients.size())	 //
+				lineOfPatients[i] = temp;								 //
+			return numberOfBloodUnitsToDelete;
+
+		}
+
+	}
+	return 0;//Returns number of blood units to delete from bloodbank
 }
 
 void BloodDonationPoint::addPatient()

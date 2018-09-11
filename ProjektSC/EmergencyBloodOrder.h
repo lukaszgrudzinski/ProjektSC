@@ -8,9 +8,11 @@ int roll_emergency();
 class EmergencyBloodOrder : public Event
 {
 	BloodBank * bloodBank;
+	Calendar * calendar;
+	BloodDonationPoint * bloodPoint;
 	bool type;
 public:
-	EmergencyBloodOrder(BloodBank* blood_bank,bool bloodType);
+	EmergencyBloodOrder(BloodBank* blood_bank,bool bloodType,BloodDonationPoint* _bloodPoint,Calendar* _calendar);
 	~EmergencyBloodOrder();
 	void execute() override;
 };

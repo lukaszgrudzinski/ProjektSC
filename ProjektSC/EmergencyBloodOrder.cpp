@@ -1,13 +1,17 @@
 #include "stdafx.h"
 #include "EmergencyBloodOrder.h"
+#include"SendPatientHome.h"
+#include"BloodOrder.h"
 #include <fstream>
 using namespace std;
 
-EmergencyBloodOrder::EmergencyBloodOrder(BloodBank* blood_bank,bool _bloodType)
+EmergencyBloodOrder::EmergencyBloodOrder(BloodBank* blood_bank,bool _bloodType, BloodDonationPoint* _bloodPoint, Calendar* _calendar)
 {
 	setTimetoExecution(roll_emergency());
 	setType(1);
 	bloodBank = blood_bank;
+	bloodPoint = _bloodPoint;
+	calendar = _calendar;
 	type = _bloodType;
 	if(type)
 		bloodBank->setEmergencyFlagB(true);
@@ -47,6 +51,31 @@ void EmergencyBloodOrder::execute()
 			bloodBank->add_blood_unit(new BloodUnit(300));
 		}
 		bloodBank->setEmergencyFlag(false);
+	}
+	//Conditional events:
+	if (bloodBank->get_blood_bank_size() < 10 && !bloodBank->getNonEmergencyFlag())							//Zamówienie krwii A
+	{
+		calendar->addEvent(new BloodOrder(bloodBank, 0, calendar, bloodPoint));
+	}
+	if (bloodBank->get_blood_bank_sizeB() < 10 && !bloodBank->getNonEmergencyFlagB())							//Zamówienie krwii B
+	{
+		calendar->addEvent(new BloodOrder(bloodBank, 1, calendar, bloodPoint));
+	}
+	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 0 && bloodBank->get_blood_bank_size() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlag())		//Zamówienie awaryjne krwii A
+	{
+		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 0,bloodPoint,calendar));
+	}
+	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 1 && bloodBank->get_blood_bank_sizeB() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlagB())		//Zamówienie awaryjne krwii B
+	{
+		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 1, bloodPoint, calendar));
+	}
+	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 0 && bloodBank->get_blood_bank_size() > bloodPoint->getPatientsBloodNeeded() && bloodPoint->getPatientsBloodNeeded() != 0)												//Giving a pacient needed blood and sending him home
+	{
+		calendar->addEvent(new SendPatientHome(bloodPoint, bloodBank, calendar));
+	}
+	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 1 && bloodBank->get_blood_bank_sizeB() > bloodPoint->getPatientsBloodNeeded() && bloodPoint->getPatientsBloodNeeded() != 0)												//Giving a pacient needed blood and sending him home
+	{
+		calendar->addEvent(new SendPatientHome(bloodPoint, bloodBank, calendar));
 	}
 }
 int roll_emergency()

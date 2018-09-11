@@ -59,6 +59,8 @@ void Calendar::executeNthElement(int n)
 		eventList[n] = temp;
 		
 	}
+	//Conditional Events:
+
 }
 
 void Calendar::showEvents()
@@ -144,6 +146,7 @@ int Calendar::getCurrentTime()
 
 Calendar::Calendar()
 {
+	
 	numberOfEmergencyOrders = 0;
 	absoluteTime = 0;
 }

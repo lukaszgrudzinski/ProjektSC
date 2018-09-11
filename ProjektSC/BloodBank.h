@@ -42,6 +42,7 @@ public:
 	int getBloodUnitsUsed();
 	static bool isOlder(const BloodUnit* a, const BloodUnit* b);
 	BloodBank(Calendar* _calendar);
+	BloodDonationPoint * bloodPoint;
 	~BloodBank();
 };
 

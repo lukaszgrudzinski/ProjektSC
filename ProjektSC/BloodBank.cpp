@@ -123,12 +123,12 @@ int BloodBank::get_blood_bank_sizeB()
 void BloodBank::add_blood_unit(BloodUnit* bunit)
 {
 	BloodPool.push_back(bunit);
-	calendar->addEvent(new UtilizeBlood(bunit->getTimeToGoingBad(), this));
+	calendar->addEvent(new UtilizeBlood(bunit->getTimeToGoingBad(), this,calendar,bloodPoint));
 }
 void BloodBank::add_blood_unitB(BloodUnit* bunit)
 {
 	BloodPoolB.push_back(bunit);
-	calendar->addEvent(new UtilizeBlood(bunit->getTimeToGoingBad(), this));
+	calendar->addEvent(new UtilizeBlood(bunit->getTimeToGoingBad(), this, calendar, bloodPoint));
 }
 void BloodBank::sortBlood()
 {

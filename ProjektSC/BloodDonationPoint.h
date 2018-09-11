@@ -15,8 +15,12 @@ public:
 	bool canWeSendAPacientHome();
 	int getPatientsBloodNeeded();
 	bool getPatientsBloodTypeNeeded();
+	bool DoWeSendPatientWithBloodTypeA();
+	bool DoWeSendPatientWithBloodTypeB();
 	bool isLineEmpty();
 	void eraseFirstPatient();
+	int eraseFirstPatientWithAType();
+	int eraseFirstPatientWithBType();
 	void addPatient();
 	BloodDonationPoint(BloodBank* _bloodBank);
 	~BloodDonationPoint();

@@ -4,6 +4,7 @@
 
 class Calendar
 {
+	BloodDonationPoint* hospital;
 	std::vector <Event*> eventList;
 	unsigned long int absoluteTime;
 	int numberOfEmergencyOrders;

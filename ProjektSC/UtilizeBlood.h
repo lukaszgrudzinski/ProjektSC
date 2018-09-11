@@ -10,8 +10,10 @@
 class UtilizeBlood :public Event
 {
 	BloodBank* bloodBank;
+	Calendar* calendar;
+	BloodDonationPoint * bloodPoint;
 public:
-	UtilizeBlood(int bestBy,BloodBank* _bloodBank);
+	UtilizeBlood(int bestBy,BloodBank* _bloodBank,Calendar* _calendar,BloodDonationPoint * _bloodPoint);
 	~UtilizeBlood();
 	void execute  (BloodDonationPoint* bloodPoint);
 	void execute() override;
