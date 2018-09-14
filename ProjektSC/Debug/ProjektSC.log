@@ -1,10 +1,6 @@
-﻿  BloodOrder.cpp
-c:\users\grudzio\source\repos\projektsc\projektsc\bloodorder.cpp(89): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  NewBloodDonor.cpp
+﻿  NewBloodDonor.cpp
 c:\users\grudzio\source\repos\projektsc\projektsc\newblooddonor.cpp(75): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
   NewPatient.cpp
 c:\users\grudzio\source\repos\projektsc\projektsc\newpatient.cpp(71): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
-  SendPatientHome.cpp
-  UtilizeBlood.cpp
   Generating Code...
   ProjektSC.vcxproj -> C:\Users\Grudzio\source\repos\ProjektSC\Debug\ProjektSC.exe

@@ -10,7 +10,7 @@ class EmergencyBloodOrder : public Event
 	BloodBank * bloodBank;
 	Calendar * calendar;
 	BloodDonationPoint * bloodPoint;
-	bool type;
+	bool btype;
 public:
 	EmergencyBloodOrder(BloodBank* blood_bank,bool bloodType,BloodDonationPoint* _bloodPoint,Calendar* _calendar);
 	~EmergencyBloodOrder();

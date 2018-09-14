@@ -87,6 +87,12 @@ void Calendar::showEvents()
 		case 4:
 			std::cout << "Utilize Blood";
 			break;
+		case 5:
+			std::cout << "Awareness Campaign";
+			break;
+		case 6:
+			std::cout << "End of Awareness Campaign";
+			break;
 		case 10:
 			std::cout << "Send Patient home";
 			break;

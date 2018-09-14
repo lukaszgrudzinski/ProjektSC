@@ -147,12 +147,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AwarenessCampaign.h" />
     <ClInclude Include="BloodBank.h" />
     <ClInclude Include="BloodDonationPoint.h" />
     <ClInclude Include="BloodOrder.h" />
     <ClInclude Include="BloodUnit.h" />
     <ClInclude Include="Calendar.h" />
     <ClInclude Include="EmergencyBloodOrder.h" />
+    <ClInclude Include="EndOfCampaign.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="NewBloodDonor.h" />
     <ClInclude Include="NewPatient.h" />
@@ -163,12 +165,14 @@
     <ClInclude Include="UtilizeBlood.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AwarenessCampaign.cpp" />
     <ClCompile Include="BloodBank.cpp" />
     <ClCompile Include="BloodDonationPoint.cpp" />
     <ClCompile Include="BloodOrder.cpp" />
     <ClCompile Include="BloodUnit.cpp" />
     <ClCompile Include="Calendar.cpp" />
     <ClCompile Include="EmergencyBloodOrder.cpp" />
+    <ClCompile Include="EndOfCampaign.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="NewBloodDonor.cpp" />
     <ClCompile Include="NewPatient.cpp" />

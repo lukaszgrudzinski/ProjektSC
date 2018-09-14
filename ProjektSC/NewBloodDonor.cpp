@@ -27,11 +27,11 @@ void NewBloodDonor::execute()
 	{
 		calendar->addEvent(new BloodOrder(bloodBank, 1, calendar, bloodPoint));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 0 && bloodBank->get_blood_bank_size() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlag())		//Zamówienie awaryjne krwii A
+	if (bloodPoint->DoWeCallForAEmergencyBloodOrderA() && !bloodBank->getEmergencyFlag())		//Zamówienie awaryjne krwii A
 	{
 		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 0, bloodPoint, calendar));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 1 && bloodBank->get_blood_bank_sizeB() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlagB())		//Zamówienie awaryjne krwii B
+	if (bloodPoint->DoWeCallForAEmergencyBloodOrderB() && !bloodBank->getEmergencyFlagB())		//Zamówienie awaryjne krwii B
 	{
 		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 1, bloodPoint, calendar));
 	}
@@ -48,7 +48,7 @@ void NewBloodDonor::execute()
 NewBloodDonor::NewBloodDonor(BloodBank * _bloodBank, Calendar * _calendar, BloodDonationPoint* _bloodPoint)
 {
 	bloodPoint = _bloodPoint;
-	setTimetoExecution(roll_donor());
+	setTimetoExecution(roll_donor() - _bloodPoint->getCorrectionDueToAwarenessCampaign());
 	calendar = _calendar;
 	bloodBank = _bloodBank;
 	bloodBank->bloodPoint = bloodPoint;
@@ -72,7 +72,7 @@ int roll_donor()
 {
 	static double a = 0.175555987;	//This is the seed
 	a = a * 79 - (int)(a * 79);
-	return round( -950 * log(a));	//-850
+	return round( -950 * log(a));
 }
 bool roll_blood_type()
 {

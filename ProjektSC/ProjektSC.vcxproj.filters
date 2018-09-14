@@ -57,6 +57,12 @@
     <ClInclude Include="BloodBank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AwarenessCampaign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EndOfCampaign.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -99,6 +105,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BloodBank.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AwarenessCampaign.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EndOfCampaign.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

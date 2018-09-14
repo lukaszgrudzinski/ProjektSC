@@ -14,6 +14,16 @@
 
 
 
+int BloodDonationPoint::getCorrectionDueToAwarenessCampaign()
+{
+	return correctionDueToAwarenessCampaign;
+}
+
+void BloodDonationPoint::setCorrectionDueToAwarenessCampaign(int x)
+{
+	correctionDueToAwarenessCampaign = x;
+}
+
 void BloodDonationPoint::showPatients()
 {
 	std::cout << "Current line of pacients:" << std::endl<<"	";
@@ -89,20 +99,34 @@ bool BloodDonationPoint::DoWeSendPatientWithBloodTypeB()
 	return false;
 }
 
+bool BloodDonationPoint::DoWeCallForAEmergencyBloodOrderA()
+{
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (lineOfPatients[i]->typeeNeeded == 0 && bloodBank->get_blood_bank_size() < lineOfPatients[i]->bloodUnitsNeeded)
+			return true;
+
+	}
+	return false;
+}
+
+bool BloodDonationPoint::DoWeCallForAEmergencyBloodOrderB()
+{
+	for (int i = 0; i < lineOfPatients.size(); i++)
+	{
+		if (lineOfPatients[i]->typeeNeeded == 1 && bloodBank->get_blood_bank_sizeB() < lineOfPatients[i]->bloodUnitsNeeded)
+			return true;
+
+	}
+	return false;
+}
+
 bool BloodDonationPoint::isLineEmpty()
 {
 	if (lineOfPatients.size() == 0)
 		return true;
 	else
 		return false;
-}
-
-void BloodDonationPoint::eraseFirstPatient()
-{
-	
-	bloodBank->popBloodUnit(lineOfPatients[0]->bloodUnitsNeeded);
-	//bloodBank->bloodUnitsUsed+= lineOfPatients[0]->bloodUnitsNeeded;
-	lineOfPatients.erase(lineOfPatients.begin());
 }
 
 int BloodDonationPoint::eraseFirstPatientWithAType()
@@ -157,6 +181,7 @@ void BloodDonationPoint::addPatient()
 BloodDonationPoint::BloodDonationPoint(BloodBank* _bloodBank)
 {
 	bloodBank = _bloodBank;
+	correctionDueToAwarenessCampaign = 0;
 }
 
 

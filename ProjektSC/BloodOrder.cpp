@@ -7,14 +7,9 @@
 using namespace std;
 
 
-char BloodOrder::getBloodType()
-{
-	return type;
-}
-
 void BloodOrder::execute()
 {
-	if (type)
+	if (btype)
 	{
 		for (int i = 0; i < 25; i++)
 		{
@@ -39,11 +34,11 @@ void BloodOrder::execute()
 	{
 		calendar->addEvent(new BloodOrder(bloodBank, 1, calendar, bloodPoint));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 0 && bloodBank->get_blood_bank_size() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlag())		//Zamówienie awaryjne krwii A
+	if (bloodPoint->DoWeCallForAEmergencyBloodOrderA() && !bloodBank->getEmergencyFlag())		//Zamówienie awaryjne krwii A
 	{
 		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 0, bloodPoint, calendar));
 	}
-	if (!bloodPoint->isLineEmpty() && bloodPoint->getPatientsBloodTypeNeeded() == 1 && bloodBank->get_blood_bank_sizeB() < bloodPoint->getPatientsBloodNeeded() && !bloodBank->getEmergencyFlagB())		//Zamówienie awaryjne krwii B
+	if (bloodPoint->DoWeCallForAEmergencyBloodOrderB() && !bloodBank->getEmergencyFlagB())		//Zamówienie awaryjne krwii B
 	{
 		calendar->addEvent(new EmergencyBloodOrder(bloodBank, 1, bloodPoint, calendar));
 	}
@@ -64,8 +59,8 @@ BloodOrder::BloodOrder(BloodBank* _bloodBank,bool _type, Calendar * _calendar, B
 	bloodPoint = _bloodPoint;
 	calendar = _calendar;
 	setType(0);
-	type = _type;
-	if(type)
+	btype = _type;
+	if(btype)
 		bloodBank->setNonEmergencyFlagB(true);
 	else 
 		bloodBank->setNonEmergencyFlag(true);
